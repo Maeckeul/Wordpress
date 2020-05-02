@@ -21,7 +21,7 @@ get_header();
           $categorySlug = $postCategories[0]->slug;
           ?>
 
-            <a href="" class="post__category post__category--color-<?= $categorySlug ?>"><?= $category ?></a>
+            <a href="<?= get_category_link($postCategories[0]->term_id) ?>" class="post__category post__category--color-<?= $categorySlug ?>"><?= $category ?></a>
             <div class="post__meta">
               <img class="post__author-icon" src="<?= get_template_directory_uri() ?>/assets/images/icon-dar.png" alt="">
               <strong class="post__author"><?php the_author() ?></strong>
