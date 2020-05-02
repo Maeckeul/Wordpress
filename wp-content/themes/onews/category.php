@@ -2,10 +2,15 @@
 
 get_header();
 
+$postCategories = get_the_category(); 
+$category = $postCategories[0]->name;
+$categorySlug = $postCategories[0]->slug;
+          
+
 ?>
         
         <!-- emmet: h2+article*6>a+h3+div(img+strong+time)+p+a -->
-        <h2 class="right__title">Latest News</h2>
+        <h2 class="right__title"><?= $category ?></h2>
         <div class="posts">
 
         <?php
@@ -14,12 +19,6 @@ get_header();
         ?>
 
           <article class="post">
-
-          <?php 
-          $postCategories = get_the_category(); 
-          $category = $postCategories[0]->name;
-          $categorySlug = $postCategories[0]->slug;
-          ?>
 
             <a href="<?= get_category_link($postCategories[0]->term_id) ?>" class="post__category post__category--color-<?= $categorySlug ?>"><?= $category ?></a>
             <h3><?php the_title() ?></h3>
