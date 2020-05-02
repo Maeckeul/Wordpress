@@ -1,5 +1,18 @@
 <?php
 
+function codex_custom_init() {
+    $args = [
+        'public' => true,
+        'label' => 'Portfolio',
+        'show_in_rest' => true,
+        'menu_icon' => 'dashicons-id'
+    ];
+
+    register_post_type('portfolio', $args);
+}
+
+add_action('init', 'codex_custom_init');
+
 function onews_setup() {
     add_theme_support('title-tag');
     add_theme_support('menus');
