@@ -6,7 +6,7 @@ get_header();
         
         <!-- emmet: h2+article*6>a+h3+div(img+strong+time)+p+a -->
         <h2 class="right__title"><?php the_title() ?></h2>
-        <div class="posts">
+        <div class="post post--solo">
 
         <?php
         if(have_posts()) :
