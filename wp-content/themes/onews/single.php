@@ -34,6 +34,11 @@ get_header();
               <time datetime="<?= $datetime ?>"><?= $date ?></time>
             </div>
             <div><?php the_content() ?></div>
+            
+            <div class="post__nav__link">
+              <div><?php previous_post_link() ?></div>
+              <div><?php next_post_link() ?></div>
+            </div>
           </article>
 
         <?php
@@ -41,6 +46,33 @@ get_header();
         endif;
         ?>
 
+        </div>
+        
+        <div>
+          <h3>Plus d'articles de cette catégorie ?</h3>
+          
+          <?php
+            $args = [
+              'cat' => $postCategories[0]->term_id,
+              'post__not_in' => [get_the_ID()]
+            ];
+
+            $query = new WP_Query($args);
+
+            if($query->have_posts()) {
+              echo '<ul>';
+              while( $query->have_posts()) {
+                $query->the_post();
+                echo '<li>' . get_the_title() . '</li>';
+              }
+              echo '</ul>';
+            } else {
+              echo '<div>Il n\' y a pas plus d\'articles dans cette catégorie</div>';
+            }
+
+            wp_reset_postdata();
+          ?>
+          
         </div>
 
 <?php
